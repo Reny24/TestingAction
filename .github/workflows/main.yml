@@ -45,7 +45,7 @@ jobs:
         run: | 
           mvn package
       - name: Trova pacchetto jar
-        run: find ./target -name "*.jar" -type f
+        run: find testino/target -name "*.jar" -type f
 
 
       - name: publish
