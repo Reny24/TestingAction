@@ -13,13 +13,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate Token
-        id: generate_token
-        uses: tibdex/github-app-token@v2
+  #    - name: Generate Token
+   #     id: generate_token
+    #    uses: tibdex/github-app-token@v2
+     #   with:
+      #    app_id: ${{ secrets.APP_ID }}
+       #   private_key: ${{ secrets.PRIVATE_KEY }}
+        #  installation_id: ${{ secrets.INSTALLATION_ID }}
+      - uses: actions/create-github-app-token@v1
+        id: app-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
-          installation_id: ${{ secrets.INSTALLATION_ID }}
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
           
           
 
@@ -52,6 +57,6 @@ jobs:
      #   run: curl -X PUT -u Reny24:${{ steps.generate_token.outputs.token }} --data-binary testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction"
         run: mvn deploy -X --file  testino/pom.xml 
         env: 
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           
            
