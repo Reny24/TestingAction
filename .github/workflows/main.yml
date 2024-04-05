@@ -50,6 +50,6 @@ jobs:
 
       - name: publish
      #   run: curl -X PUT -u Reny24:${{ steps.generate_token.outputs.token }} --data-binary testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction"
-        run: mvn deploy -f TestingAction/testino -Dregistry=https://maven.pkg.github.com/Reny24
+        run: mvn deploy --file  testino/pom.xml -Dregistry=https://maven.pkg.github.com/Reny24
         env: 
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
