@@ -43,7 +43,7 @@ jobs:
 
       - name: Creazione package mvn
         run: | 
-          mvn package
+          mvn package --file testino/pom.xml
       - name: Trova pacchetto jar
         run: find testino/target -name "*.jar" -type f
 
