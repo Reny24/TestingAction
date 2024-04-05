@@ -49,4 +49,4 @@ jobs:
 
 
       - name: publish
-        run: curl -X PUT -u Reny24:${{ steps.generate_token.outputs.token }} --data-binary ./target/micro-services-test1-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction"
+        run: curl -X PUT -u Reny24:${{ steps.generate_token.outputs.token }} --data-binary /Reny24/TestingAction/tree/main/testino/src/main/java/com/example/testino/micro-services-test1-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction"
