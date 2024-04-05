@@ -26,7 +26,7 @@ jobs:
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
       #Setup Maven, act usa un Container Docker quindi bisogna rifare il setup al suo interno
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v4
+        uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
 
