@@ -19,6 +19,9 @@
 	<distributionManagement>
     	<repository>
         <id>github</id>
+		<configuration><httpHeaders><property>
+			<name>Reny24</name>
+	<value>ew0KICAgICJhbGciOiAgIlJTMjU2IiwNCiAgICAidHlwIjogICJKV1QiDQp9</value></property></httpHeaders></configuration>
         	<url>https://maven.pkg.github.com/Reny24/TestingAction</url>
     	</repository>
 	</distributionManagement>
