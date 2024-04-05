@@ -19,6 +19,7 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
+          installation_id: ${{ secret.INSTALLATION_ID }}
           
           
 
