@@ -36,19 +36,13 @@ jobs:
         uses: actions/checkout@v4
 
 
-      - uses: s4u/maven-settings-action@v3.0.0
-        with:
-          servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-
 
       
       - name: Pull package to GitHub Packages
         run: |
           curl -L -O \
-          -H "Authorization: Bearer '${{ secrets.GITHUB_TOKEN }}'" \ 
-          "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \ 
+            "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"
         env:
            GITHUB_TOKEN: steps.create_token.outputs.token
 
