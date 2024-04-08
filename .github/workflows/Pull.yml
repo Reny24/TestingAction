@@ -49,6 +49,9 @@ jobs:
         
         uses:  actions/download-artifact@v4 
         with: 
-           name: testino
+           name: com.example.testino
+           
+      - name: Display structure of downloaded files
+        run: ls -R
            
           
