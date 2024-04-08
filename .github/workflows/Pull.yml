@@ -37,7 +37,7 @@ jobs:
 
       - uses: s4u/maven-settings-action@v3.0.0
         with:
-          repositories: '[{ "url": "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"}]'
+          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"}]'
           servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
