@@ -51,7 +51,7 @@ jobs:
        # env:
         #   GITHUB_TOKEN: steps.create_token.outputs.token
         run: |
-          cd /testino
+          cd testino
           mvn install -X -s ~/.m2/settings.xml
 
         
