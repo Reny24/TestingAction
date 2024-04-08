@@ -29,8 +29,11 @@ jobs:
 
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
      
-
-
+      - name: Setup Java 17 Temurin
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
   
       - name: Checkout the code
         uses: actions/checkout@v4
