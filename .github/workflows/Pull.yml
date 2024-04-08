@@ -48,7 +48,7 @@ jobs:
         run: |
           curl -L -O \
           -H "Authorization: Bearer '${{ secrets.GITHUB_TOKEN }}'" \ 
-          "https://maven.pkg.github.com/Reny24/TestingAction/com.example.testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"
+          "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"
         env:
            GITHUB_TOKEN: steps.create_token.outputs.token
 
