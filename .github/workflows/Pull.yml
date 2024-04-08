@@ -1,0 +1,54 @@
+name: Publish/Push Artifact Package by Auth Github App
+on: workflow_dispatch
+jobs:
+  microservice-test:
+
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate Token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+        #  installation_id: ${{ secrets.INSTALLATION_ID }}
+   #   - uses: actions/create-github-app-token@v1.9.2
+   #     id: app-token
+   #     with:
+    #      app-id: ${{ secrets.APP_ID }}
+     #     private-key: ${{ secrets.PRIVATE_KEY }}
+          
+
+      - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
+     
+
+
+  
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+
+      - uses: s4u/maven-settings-action@v3.0.0
+        with:
+          servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+
+      
+      - name: Pull package to GitHub Packages
+   #     run: curl -X PUT -u ghs:${{ secrets.GITHUB_TOKEN }} --data-binary @testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-SNAPSHOT.jar"
+        
+        uses:  actions/download-artifact@v4 
+        with: 
+           name: testino
+           
+          
