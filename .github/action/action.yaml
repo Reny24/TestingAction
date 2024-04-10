@@ -15,11 +15,7 @@ runs:
       with:
         distribution: 'temurin'
         java-version: '17'
-    - name: Creazione package mvn
-      run: |
-        mvn package --file testino/pom.xml
-    - name: Trova pacchetto jar
-      run: find testino/target -name "*.jar" -type f
+
     - uses: s4u/maven-settings-action@v3.0.0
       with:
         servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
