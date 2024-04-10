@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Custom Action
-        uses: ./.github/action/action.yaml
+        uses: ./.github/action
 
       - uses: s4u/maven-settings-action@v3.0.0
         with:
