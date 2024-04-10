@@ -39,11 +39,11 @@ runs:
       run: find ./testino/target -name "*.jar" -type f
 
 
-    - uses: s4u/maven-settings-action@v3.0.0
-      with:
-        servers: '[{ "id": "github", "username": "ghs", "password": "${{ env.GITHUB_TOKEN }}" }]'
-      env:
-        GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+  #  - uses: s4u/maven-settings-action@v3.0.0
+   #   with:
+    #    servers: '[{ "id": "github", "username": "ghs", "password": "${{ env.GITHUB_TOKEN }}" }]'
+     # env:
+      #  GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
 
     - name: Push package to GitHub Packages
