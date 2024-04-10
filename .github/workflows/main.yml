@@ -33,6 +33,9 @@ jobs:
         uses: ./.github/action
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+            GITHUB_ACTOR: ghs
+            GITHUB_TOKEN: ${{ steps.create_token.outputs.token }}
 
           
            
