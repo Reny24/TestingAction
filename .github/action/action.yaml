@@ -15,8 +15,6 @@ runs:
       with:
         distribution: 'temurin'
         java-version: '17'
-    - name: Creazione package mvn
-      run: |
-        mvn package --file testino/pom.xml
+
     - name: Trova pacchetto jar
       run: find testino/target -name "*.jar" -type f
