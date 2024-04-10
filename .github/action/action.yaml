@@ -24,11 +24,13 @@ runs:
 
 
     - name: Creazione package mvn
+      shell: bash
       run: |
         mvn package --file ./testino/pom.xml
         
 
     - name: Trova pacchetto jar
+      shell: bash
       run: find ./testino/target -name "*.jar" -type f
 
 
