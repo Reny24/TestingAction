@@ -25,6 +25,8 @@ jobs:
       - name: Login to GitHub Packages Docker registry
         run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
 
+      - name: Inside the testino
+        run: cd testino     
 
       - name: Build the Docker image
         run: docker build . --file testino/Dockerfile --tag maven:3.8.4-openjdk-17-slim
