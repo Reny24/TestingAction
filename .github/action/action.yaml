@@ -41,7 +41,7 @@ runs:
 
     - uses: s4u/maven-settings-action@v3.0.0
       with:
-        servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
+        servers: '[{ "id": "github", "username": "ghs", "password": "${{ env.GITHUB_TOKEN }}" }]'
       env:
         GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
@@ -49,7 +49,7 @@ runs:
     - name: Push package to GitHub Packages
       shell: bash
 
-      run: curl -X PUT -u ghs:${{ secrets.GITHUB_TOKEN }} --data-binary @testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-SNAPSHOT.jar"
+      run: curl -X PUT -u ghs:${{ env.GITHUB_TOKEN }} --data-binary @testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-SNAPSHOT.jar"
 
   #    run: mvn deploy -X --file  testino/pom.xml
       env:
