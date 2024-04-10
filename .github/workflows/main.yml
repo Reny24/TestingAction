@@ -17,8 +17,8 @@ jobs:
      #     app_id: ${{ secrets.APP_ID }}
      #     private_key: ${{ secrets.PRIVATE_KEY }}
         #  installation_id: ${{ secrets.INSTALLATION_ID }}
-      - uses: actions/create-github-app-token@v1.9.2
         id: app-token
+      - uses: actions/create-github-app-token@v1.9.2
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
