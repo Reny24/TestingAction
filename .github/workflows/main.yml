@@ -32,7 +32,7 @@ jobs:
       - name: Custom Action
         uses: ./.github/action
         with:
-            GITHUB_TOKEN: ${{ steps.create_token.outputs.token }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}
 
           
            
