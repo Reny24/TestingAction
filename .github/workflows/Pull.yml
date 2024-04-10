@@ -28,34 +28,28 @@ jobs:
           
 
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
-     
-      - name: Setup Java 17 Temurin
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+
   
       - name: Checkout the code
         uses: actions/checkout@v4
 
-      - uses: s4u/maven-settings-action@v3.0.0
-        with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"}]'
-          servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-
-
-
-      
-      - name: Pull package to GitHub Packages
-       # run: |
-        #  curl -L -O -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar
+   #   - uses: s4u/maven-settings-action@v3.0.0
+    #    with:
+     #     repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar"}]'
+      #    servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
        # env:
-        #   GITHUB_TOKEN: steps.create_token.outputs.token
-        run: |
-          cd testino
-          mvn install -X -s ~/.m2/settings.xml
+        #  GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Custom Action
+        uses: ./.github/action/pull_action
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_ACTOR: ghs
+          GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
+       # run: |
+        #  cd testino
+         # mvn install -X -s ~/.m2/settings.xml
 
         
       - name: Find package jar
