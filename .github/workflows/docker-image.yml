@@ -4,7 +4,8 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
-      -main
+      - main
+      - main1
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
