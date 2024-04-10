@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      -main
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Generate Token
+      id: generate_token
+      uses: tibdex/github-app-token@v2
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.PRIVATE_KEY }}
+          
+    - uses: actions/checkout@v3
+    - name: Login to GitHub Packages Docker registry
+      run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
+
+    
+    - name: Build the Docker image
+      run: docker build . --file testino/Dockerfile --tag tests:$(date +%s)
+      
+    - name: Push the Docker image to GitHub Packages
+      run: docker push ghcr.io/${{ github.repository_owner }}/IMAGE_NAME:TAG
