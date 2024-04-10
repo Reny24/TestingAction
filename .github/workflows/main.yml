@@ -28,11 +28,12 @@ jobs:
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
 
 
-      - name: Custom Action
-        uses: ./.github/action/action.yaml
+
       - name: Checkout the code
         uses: actions/checkout@v4
 
+      - name: Custom Action
+        uses: ./.github/action/action.yaml
 
       - uses: s4u/maven-settings-action@v3.0.0
         with:
