@@ -34,11 +34,7 @@ jobs:
 
       - name: Custom Action
         uses: ./.github/action
-      - name: Creazione package mvn
-        run: |
-          mvn package --file testino/pom.xml
-      - name: Trova pacchetto jar
-        run: find testino/target -name "*.jar" -type f
+
       
       - name: Push package to GitHub Packages
    #     run: curl -X PUT -u ghs:${{ secrets.GITHUB_TOKEN }} --data-binary @testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-SNAPSHOT.jar"
