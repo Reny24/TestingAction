@@ -2,11 +2,10 @@ FROM maven:3.8.4-openjdk-17-slim AS tests
 
 WORKDIR /app
 
-COPY testino/pom.xml .
+COPY pom.xml .
 
-WORKDIR /app/testino
 
-RUN mvn clean install
+RUN mvn -X clean install
 
 WORKDIR /app
 

@@ -42,6 +42,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass> com.example.testino</mainClass>
 					<image>
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
 					</image>
