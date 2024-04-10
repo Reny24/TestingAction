@@ -1,4 +1,9 @@
 name: 'Push JAR'
+inputs:
+  github-token:
+    description: 'The GitHub token to use'
+    required: true
+
 description: 'Pushing a JAR in GitHub packages'
 runs:
   using: 'composite'
