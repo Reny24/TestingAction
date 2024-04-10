@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY testino/pom.xml ./app
 
+CMD ["cd", " /testino"]
 RUN mvn clean install
 
 COPY . .
