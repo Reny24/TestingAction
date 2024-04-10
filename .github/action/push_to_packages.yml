@@ -1,0 +1,22 @@
+name: 'Push JAR'
+description: 'Pushing a JAR in GitHub packages'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
+    - name: Setup Java 17 Temurin
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - name: Creazione package mvn
+      run: |
+        mvn package --file testino/pom.xml
+    - name: Trova pacchetto jar
+      run: find testino/target -name "*.jar" -type f

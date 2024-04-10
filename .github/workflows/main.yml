@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
       - name: Generate Token
         id: generate_token
@@ -29,28 +26,13 @@ jobs:
           
 
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
-     
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v4.5
-        with:
-          maven-version: 3.9.5
 
 
-      - name: Setup Java 17 Temurin
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-  
+      - name: Custom Action
+        uses: ./.github/action
       - name: Checkout the code
         uses: actions/checkout@v4
 
-      - name: Creazione package mvn
-        run: | 
-          mvn package --file testino/pom.xml
-      - name: Trova pacchetto jar
-        run: find testino/target -name "*.jar" -type f
 
       - uses: s4u/maven-settings-action@v3.0.0
         with:
