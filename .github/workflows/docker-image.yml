@@ -26,7 +26,7 @@ jobs:
 
     
     - name: Build the Docker image
-      run: docker build . --file testino/Dockerfile --tag tests:$(date +%s)
+      run: docker build . --file testino/Dockerfile --tag maven:4.0.0-openjdk-17-slim
       
     - name: Push the Docker image to GitHub Packages
-      run: docker push ghcr.io/${{ github.repository_owner }}/IMAGE_NAME:TAG
+      run: docker push ghcr.io/${{ github.repository_owner }}/maven:4.0.0-openjdk-17-slim
