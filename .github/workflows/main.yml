@@ -35,8 +35,7 @@ jobs:
       - name: Custom Action
         uses: ./.github/action
         with:
-          args: ${{ steps.create_token.outputs.token }}
-
+          args: '${{ steps.create_token.outputs.token }}'
 
           
            
