@@ -5,7 +5,7 @@ WORKDIR /app
 COPY /testino/pom.xml .
 
 
-RUN mvn -X clean install
+RUN mvn clean install
 
 WORKDIR /app
 

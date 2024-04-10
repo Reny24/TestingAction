@@ -32,4 +32,4 @@ jobs:
         run: docker build . --file testino/Dockerfile --tag maven:3.8.4-openjdk-17-slim
 
       - name: Push the Docker image to GitHub Packages
-        run: docker push ghcr.io/${{ github.repository_owner }}/maven:3.8.4-openjdk-17-slim
+        run: docker push ghcr.io/${{ github.repository_owner }}/maven:3.8.4-openjdk-17-slim | tr '[A-Z]' '[a-z]'
