@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pom.xml .
 
 
-RUN mvn clean install
+RUN mvn -X clean install
 
 WORKDIR /app
 
