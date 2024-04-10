@@ -16,5 +16,3 @@ runs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Trova pacchetto jar
-      run: find testino/target -name "*.jar" -type f
