@@ -28,7 +28,7 @@ runs:
           version: 0.0.1-SNAPSHOT
           outputDirectory: app_libs
           repository: https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
-      run: ls -l app_libs
+    #  run: ls -l app_libs
     #  run: |
      #    curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-20240408.085253-1.jar
     #  shell: bash
