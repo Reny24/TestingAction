@@ -35,8 +35,8 @@ jobs:
           username: ghs
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Inside the testino
-        run: cd testino
+ #     - name: Inside the testino
+ #       run: cd testino
 
 
       - name: Extract metadata (tags, labels) for Docker
