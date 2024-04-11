@@ -21,19 +21,19 @@ runs:
 
 
     - name: Pull package to GitHub Packages
-      uses: nvoxland/jar-download-action@v1
-      with:
-          groupId: com.example
-          artifactId: testino
-          version: 0.0.1-SNAPSHOT
-          outputDirectory: app_libs
-          repository: https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
-      env:
-        JAVA_HOME: 'C:\Program Files\Java\jdk-17'
+     # uses: nvoxland/jar-download-action@v1
+     # with:
+      #    groupId: com.example
+       #   artifactId: testino
+        #  version: 0.0.1-SNAPSHOT
+       #   outputDirectory: app_libs
+      #    repository: https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
+    #  env:
+     #   JAVA_HOME: 'C:\Program Files\Java\jdk-17'
     #  run: ls -l app_libs
-    #  run: |
-     #    curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
-    #  shell: bash
+      run: |
+         curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
+      shell: bash
     #  env:
      #   GITHUB_TOKEN: steps.create_token.outputs.token
 
