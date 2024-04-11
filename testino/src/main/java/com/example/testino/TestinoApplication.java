@@ -13,8 +13,8 @@ public class TestinoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TestinoApplication.class, args);
 
-		output peppesiss = new output("Peppe");
-		System.out.println(peppesiss);
+		output peppesissi = new output("Peppe");
+		System.out.println(peppesissi);
 	}
 
 
