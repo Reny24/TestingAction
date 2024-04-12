@@ -60,8 +60,8 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: ${{ env.IMAGE_NAME }}
-          labels: ${{ env.IMAGE_NAME }}
+          tags: reny24/testingaction
+          labels: reny24/testingaction
           secrets: |
             "github_token=${{ env.GITHUB_TOKEN }}"
         env:
