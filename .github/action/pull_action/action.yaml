@@ -44,18 +44,12 @@ runs:
    #   run: |
    #      curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
    #   shell: bash
-    - name: Tras
-      uses: s4u/maven-settings-action@v3.0.0
-      with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT"}]'
-          servers: '[{ "id": "github", "username": "ghs", "password": "${{ env.GITHUB_TOKEN }}" }]'
-      env:
-          GITHUB_TOKEN: ${{ inputs.github-token }}
+
     - name: take last version
       shell: bash
 
       run:
-         mvn dependency:copy --file testino \
+         mvn dependency:get --file testino \
             -Dartifact= com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory= /tmp/my_custom_dir \
             -DremoteRepositories= https://maven.pkg.github.com/Reny24/TestingAction \
