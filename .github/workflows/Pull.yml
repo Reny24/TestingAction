@@ -39,8 +39,10 @@ jobs:
       #    servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
        # env:
         #  GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: |
-          cd testino
+      - name: bho
+        run: cd testino
+
+
       - name: Custom Action
         uses: ./.github/action/pull_action
         with:
