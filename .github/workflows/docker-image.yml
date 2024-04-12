@@ -74,7 +74,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-     #     secrets: |
-      #      "github_token=${{ env.GITHUB_TOKEN }}"
+     #    secrets: |
+     #     "github_token=${{ env.GITHUB_TOKEN }}"
      #   env:
      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
