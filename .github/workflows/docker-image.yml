@@ -17,18 +17,17 @@ jobs:
       IMAGE_NAME: ${{ github.repository }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Generate Token
-
-        uses: actions/create-github-app-token@v1.9.2
-        id: app-token
+        id: generate_token
+        uses: tibdex/github-app-token@v2
         with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
 
 
     #  - name: Login to GitHub Packages Docker registry
@@ -38,19 +37,19 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ghs
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ env.GITHUB_TOKEN }}
         env:
-          GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
  #     - name: Inside the testino
  #       run: cd testino
 
 
-   #   - name: Extract metadata (tags, labels) for Docker
-    #    id: meta
-     #   uses: docker/metadata-action@v5
-      #  with:
-       #   images: ghcr.io/${{ env.IMAGE_NAME }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: /${{ env.IMAGE_NAME }}
 
 
    #   - name: Build the Docker image
@@ -63,9 +62,9 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: reny24/testingaction
-          labels: Reny24/testingaction
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           secrets: |
-            "github_token=${{ secrets.GITHUB_TOKEN }}"
+            "github_token=${{ env.GITHUB_TOKEN }}"
         env:
-            GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
+            GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
