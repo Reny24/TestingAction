@@ -56,7 +56,7 @@ jobs:
    #   - name: Push the Docker image to GitHub Packages
    #     run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v4
         with:
           context: ./testino
           push: true
