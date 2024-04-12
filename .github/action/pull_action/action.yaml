@@ -40,7 +40,7 @@ runs:
       shell: bash
 
       run:
-          cd testino \
+          cd TestingAction/TestingAction/testino
           mvn dependency:copy \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
