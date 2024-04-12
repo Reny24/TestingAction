@@ -43,11 +43,11 @@ jobs:
  #       run: cd testino
 
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ env.IMAGE_NAME }}
+   #   - name: Extract metadata (tags, labels) for Docker
+    #    id: meta
+     #   uses: docker/metadata-action@v5
+      #  with:
+       #   images: ghcr.io/${{ env.IMAGE_NAME }}
 
 
    #   - name: Build the Docker image
@@ -60,8 +60,8 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ env.IMAGE_NAME }}
+          labels: ${{ env.IMAGE_NAME }}
           secrets: |
             "github_token=${{ env.GITHUB_TOKEN }}"
         env:
