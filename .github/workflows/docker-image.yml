@@ -53,16 +53,18 @@ jobs:
    #   - name: Build the Docker image
    #     run: docker build . --file testino/Dockerfile --tag maven:3.8.4-openjdk-17-slim
 
-   #   - name: Push the Docker image to GitHub Packages
-   #     run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
+   #
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: ./testino
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
             "github_token=${{ env.GITHUB_TOKEN }}"
         env:
             GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      - name: Push the Docker image to GitHub Packages
+        run: docker push ghcr.io/reny24/testingaction:latest
+        # ${{ github.repository_owner }}/${{ github.repository_name }}
