@@ -51,6 +51,18 @@ runs:
 
       run: curl -X PUT -u ghs:${{ inputs.github-token }} --data-binary @testino/target/testino-0.0.1-SNAPSHOT.jar "https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT/testino-0.0.1-SNAPSHOT.jar"
 
+
+    - name: take last version
+      shell: bash
+
+      run: mvn dependency:copy \
+          -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
+          -DoutputDirectory=/tmp/my_custom_dir \
+          -DremoteRepositories=https://maven.pkg.github.com/Reny24/TestingAction/com/example/testino/0.0.1-SNAPSHOT \
+      env:
+        GITHUB_ACTOR: ghs
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+  #    mvn dependency:get -Dartifact= com.example.testino:0.0.1-SNAPSHOT
   #    run: mvn deploy -X --file  testino/pom.xml
    #   env:
     #    GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
