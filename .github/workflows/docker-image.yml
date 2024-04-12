@@ -9,7 +9,9 @@ on:
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
-
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
 
     env:
