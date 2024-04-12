@@ -12,6 +12,10 @@ runs:
       with:
         node-version: 20
 
+    - name: In testino
+      run: cd testino
+      shell: bash
+
     - name: Set up Maven
       uses: stCarolas/setup-maven@v4.5
       with:
@@ -45,7 +49,6 @@ runs:
       shell: bash
 
       run:
-         cd testino && \
          mvn dependency:copy \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
