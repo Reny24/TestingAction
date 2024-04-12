@@ -49,8 +49,7 @@ runs:
       shell: bash
 
       run:
-         cd testino && \
-         mvn dependency:copy \
+         mvn dependency:copy --file /testino \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
             -DremoteRepositories=https://maven.pkg.github.com/Reny24/TestingAction \
