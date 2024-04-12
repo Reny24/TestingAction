@@ -12,6 +12,10 @@ runs:
       with:
         node-version: 20
 
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
 
     - name: Setup Java 17 Temurin
       uses: actions/setup-java@v4
@@ -41,7 +45,7 @@ runs:
       shell: bash
 
       run:
-         ls -l && \
+         cd testino && \
          mvn dependency:copy \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
