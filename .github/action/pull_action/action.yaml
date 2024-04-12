@@ -36,13 +36,12 @@ runs:
    #   run: |
    #      curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
    #   shell: bash
-    - name: List directory contents
-      run: ls -l
-      shell: bash
+
     - name: take last version
       shell: bash
 
       run:
+         ls -l && \
          mvn dependency:copy \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
