@@ -49,9 +49,7 @@ runs:
       shell: bash
 
       run:
-         ls -l && \
-         cd testino && \ 
-         ls -l && \
+         ls -l testino && \
          mvn dependency:copy --file /testino \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
