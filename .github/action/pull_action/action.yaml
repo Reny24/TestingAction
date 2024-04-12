@@ -20,7 +20,7 @@ runs:
         java-version: '17'
 
 
-    - name: Pull package to GitHub Packages
+ #   - name: Pull package to GitHub Packages
      # uses: nvoxland/jar-download-action@v1
      # with:
       #    groupId: com.example
@@ -31,15 +31,16 @@ runs:
     #  env:
      #   JAVA_HOME: 'C:\Program Files\Java\jdk-17'
     #  run: ls -l app_libs
-      run: |
-         curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
-      shell: bash
+
+
+   #   run: |
+   #      curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
+   #   shell: bash
 
     - name: take last version
       shell: bash
 
       run:
-         cd TestingAction/TestingAction/testino && \
          mvn dependency:copy \
             -Dartifact=com.example:testino:0.0.1-SNAPSHOT \
             -DoutputDirectory=/tmp/my_custom_dir \
