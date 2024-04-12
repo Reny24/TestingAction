@@ -61,7 +61,7 @@ jobs:
           context: ./testino
           push: true
           tags: reny24/testingaction
-          labels: reny24/testingaction
+          labels: Reny24/testingaction
           secrets: |
             "github_token=${{ env.GITHUB_TOKEN }}"
         env:
