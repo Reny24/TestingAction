@@ -39,7 +39,7 @@ jobs:
            password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push to registry
-        run: docker push localhost:8082/artifactory/example-repo-local/Reny24/TestingAction:latest
+        run: docker push localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest
 
       #  - name: Login to GitHub Packages Docker registry
      #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
