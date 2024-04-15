@@ -27,4 +27,4 @@ jobs:
 
       - name: Push Docker image to JFrog Artifactory
         run: |
-          curl -u ${{ secrets.JFROG_USERNAME }}:${{ secrets.JFROG_PASSWORD }} -X PUT "http://localhost:8082/artifactory/example-repo-generic/image.tar" -T image.tar
+          curl -u ${{ secrets.JFROG_USER }}:${{ secrets.JFROG_PASSWORD }} -X PUT "http://localhost:8082/artifactory/example-repo-generic/image.tar" -T image.tar
