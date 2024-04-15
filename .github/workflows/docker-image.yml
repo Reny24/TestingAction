@@ -42,7 +42,7 @@ jobs:
       - name: Log in to Docker JFrog
         uses: docker/login-action@v3
         with:
-          registry: http://localhost:8082/artifactory/example-repo-local/Nuovo%20Documento%20di%20testo.txt
+          registry: http://localhost:8082/artifactory/example-repo-local/
           username: ${{ secrets.JFROG_USER }}
           password: ${{ secrets.JFROG_PASSWORD }}
 
@@ -73,7 +73,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: http://localhost:8082/artifactory/example-repo-local/Nuovo%20Documento%20di%20testo.txt/${{ github.repository }}
+          tags: http://localhost:8082/artifactory/example-repo-local/${{ github.repository }}
     #      labels: ${{ steps.meta.outputs.labels }} ${{ steps.meta.outputs.tags }}
      #    secrets: |
      #     "github_token=${{ env.GITHUB_TOKEN }}"
