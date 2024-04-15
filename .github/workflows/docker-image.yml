@@ -38,8 +38,6 @@ jobs:
            username: ${{ secrets.DOCKER_USERNAME }}
            password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push to registry
-        run: docker push localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest
 
       #  - name: Login to GitHub Packages Docker registry
      #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
@@ -72,14 +70,16 @@ jobs:
    #   - name: List contents of testino directory
    #     run: ls -l ./testino
 
-   #   - name: Build and push Docker image
-   #     uses: docker/build-push-action@v5
-   #     with:
-   #       context: ./testino
-   #       push: true
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./testino
+          push: false
    #       tags: http://localhost:8082/artifactory/example-repo-local/prova:latest
     #      labels: ${{ steps.meta.outputs.labels }} ${{ steps.meta.outputs.tags }}
      #    secrets: |
      #     "github_token=${{ env.GITHUB_TOKEN }}"
      #   env:
      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      - name: Push to registry
+        run: docker push localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest
