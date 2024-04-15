@@ -46,8 +46,8 @@ jobs:
    #       username: ${{ secrets.JFROG_USER }}
    #       password: ${{ secrets.JFROG_PASSWORD }}
 
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+    #    env:
+     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
  #     - name: Inside the testino
  #       run: cd testino
