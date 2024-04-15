@@ -19,10 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Authenticate with JFrog Artifactory
-        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login -u "${{ secrets.JFROG_USER }}" --password-stdin http://localhost:8082/artifactory/example-repo-local
+      - name: Build Docker image
+        run: docker build -t my_image:latest --file testino/Dockerfile .
 
-      - name: Build and push Docker image
+      - name: Save Docker image as tar archive
+        run: docker save -o image.tar my_image:latest
+
+      - name: Push Docker image to JFrog Artifactory
         run: |
-          docker build -t localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest .
-          docker push localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest
+          curl -u ${{ secrets.JFROG_USERNAME }}:${{ secrets.JFROG_PASSWORD }} -X PUT "http://localhost:8082/artifactory/example-repo-generic/image.tar" -T image.tar
