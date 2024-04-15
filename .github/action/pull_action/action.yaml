@@ -12,6 +12,14 @@ runs:
       with:
         node-version: 20
 
+    - name: In testino
+      run: cd testino
+      shell: bash
+
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.5
 
     - name: Setup Java 17 Temurin
       uses: actions/setup-java@v4
@@ -20,7 +28,7 @@ runs:
         java-version: '17'
 
 
-    - name: Pull package to GitHub Packages
+ #   - name: Pull package to GitHub Packages
      # uses: nvoxland/jar-download-action@v1
      # with:
       #    groupId: com.example
@@ -31,9 +39,24 @@ runs:
     #  env:
      #   JAVA_HOME: 'C:\Program Files\Java\jdk-17'
     #  run: ls -l app_libs
-      run: |
-         curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
+
+
+   #   run: |
+   #      curl -L -O -H "Authorization: Bearer ${{ inputs.github-token }}" https://maven.pkg.github.com/Reny24/TestingAction/packages/com/example/testino/0.0.1-SNAPSHOT
+   #   shell: bash
+
+    - name: take last version
       shell: bash
+
+      run:
+         mvn org.apache.maven.plugins:get --file testino \
+            -DremoteRepositories= "https//maven.pkg.github.com/Reny24/TestingAction" \
+            -Dartifact= "com.example:testino:0.0.1-SNAPSHOT" \
+            -DoutputDirectory= /tmp/my_custom_dir \
+
+      env:
+        GITHUB_ACTOR: ghs
+        GITHUB_TOKEN: ${{ inputs.github-token }}
     #  env:
      #   GITHUB_TOKEN: steps.create_token.outputs.token
 

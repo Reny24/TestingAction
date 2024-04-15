@@ -39,6 +39,9 @@ jobs:
       #    servers: '[{ "id": "github", "username": "ghs", "password": "${{ secrets.GITHUB_TOKEN }}" }]'
        # env:
         #  GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      - name: bho
+        run: cd testino
+
 
       - name: Custom Action
         uses: ./.github/action/pull_action
@@ -47,8 +50,7 @@ jobs:
         env:
           GITHUB_ACTOR: ghs
           GITHUB_TOKEN: ${{ steps.app_token.outputs.token }}
-       # run: |
-        #  cd testino
+
          # mvn install -X -s ~/.m2/settings.xml
 
         
