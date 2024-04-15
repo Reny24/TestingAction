@@ -42,7 +42,7 @@ jobs:
       - name: Log in to Docker JFrog
         uses: docker/login-action@v3
         with:
-          registry: http://localhost:8082/artifactory/example-repo-local/
+          registry: http://localhost:8082
           username: ${{ secrets.JFROG_USER }}
           password: ${{ secrets.JFROG_PASSWORD }}
 
