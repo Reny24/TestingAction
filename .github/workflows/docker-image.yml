@@ -39,15 +39,15 @@ jobs:
            password: ${{ secrets.DOCKER_PASSWORD }}
     #  - name: Login to GitHub Packages Docker registry
      #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
-      - name: Log in to Docker JFrog
-        uses: docker/login-action@v3
-        with:
-          registry: http://localhost:8081
-          username: ${{ secrets.JFROG_USER }}
-          password: ${{ secrets.JFROG_PASSWORD }}
+   #   - name: Log in to Docker JFrog
+   #     uses: docker/login-action@v3
+   #     with:
+   #       registry: http://localhost:8081
+   #       username: ${{ secrets.JFROG_USER }}
+   #       password: ${{ secrets.JFROG_PASSWORD }}
 
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+    #    env:
+     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
  #     - name: Inside the testino
  #       run: cd testino
