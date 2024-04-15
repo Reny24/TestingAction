@@ -37,7 +37,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: http://localhost:8082/artifactory/generic-local/2d2eec80-f8d0-11ee-97f2-edf6ba6c06d3.jfrog.io
+          registry: http://localhost:8082/artifactory/example-repo-local/Nuovo%20Documento%20di%20testo.txt
           username: ${{ secrets.JFROG_USER }}
           password: ${{ secrets.JFROG_PASSWORD }}
    #   - name: Login to GitHub Container Registry
@@ -73,7 +73,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: http://localhost:8082/artifactory/generic-local/2d2eec80-f8d0-11ee-97f2-edf6ba6c06d3/Prova
+          tags: "http://localhost:8082/artifactory/example-repo-local/Nuovo%20Documento%20di%20testo.txt"/${{ github.repository }}
     #      labels: ${{ steps.meta.outputs.labels }} ${{ steps.meta.outputs.tags }}
      #    secrets: |
      #     "github_token=${{ env.GITHUB_TOKEN }}"
