@@ -82,4 +82,4 @@ jobs:
      #   env:
      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       - name: Push to registry
-        run: docker push localhost:8082/artifactory/example-repo-local/reny24/testingaction:latest
+        run: docker push localhost:8082/artifactory/example-repo-local/reox/prova:main1
