@@ -73,7 +73,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: http://localhost:8082/artifactory/example-repo-local/${{ github.repository }}
+          tags: http://localhost:8082/artifactory/example-repo-local/${{ github.repository }}:latest
     #      labels: ${{ steps.meta.outputs.labels }} ${{ steps.meta.outputs.tags }}
      #    secrets: |
      #     "github_token=${{ env.GITHUB_TOKEN }}"
