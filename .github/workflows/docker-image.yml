@@ -46,8 +46,8 @@ jobs:
      #     registry: ${{ env.REGISTRY }}
      #     username: ghs
      #     password: ${{ env.GITHUB_TOKEN }}
-      #  env:
-      #    GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
  #     - name: Inside the testino
  #       run: cd testino
