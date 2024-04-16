@@ -8,7 +8,7 @@ on:
       - main1
 jobs:
   build-and-push:
-    if: github.event.pull_request.merged == false
+    if: github.event.pull_request.merged == true
     permissions:
       contents: read
       packages: write
@@ -31,55 +31,55 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.REGISTRY_PRIVATE_KEY }}
 
-      - name: Login to Docker Hub
+      - name: Login to JFrog
         uses: docker/login-action@v3
         with:
-      #     registry: ${{ env.REGISTRY }}
-           username: ${{ secrets.DOCKER_USERNAME }}
-           password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: https://star-cat.igtlottery.it/ui/login/
+          username: ${{ secrets.JFROG_USER }}
+          password: ${{ secrets.JFROG_PASSWORD }}
 
 
       #  - name: Login to GitHub Packages Docker registry
-     #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
-   #   - name: Log in to Docker JFrog
-   #     uses: docker/login-action@v3
-   #     with:
-   #       registry: http://localhost:8081
-   #       username: ${{ secrets.JFROG_USER }}
-   #       password: ${{ secrets.JFROG_PASSWORD }}
+      #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
+      #   - name: Log in to Docker JFrog
+      #     uses: docker/login-action@v3
+      #     with:
+      #       registry: http://localhost:8081
+      #       username: ${{ secrets.JFROG_USER }}
+      #       password: ${{ secrets.JFROG_PASSWORD }}
 
-    #    env:
-     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      #    env:
+      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
- #     - name: Inside the testino
- #       run: cd testino
-
-
-   #   - name: Extract metadata (tags, labels) for Docker
-   #     id: meta
-   #     uses: docker/metadata-action@v5
-   #     with:
-   #       images:
+      #     - name: Inside the testino
+      #       run: cd testino
 
 
-   #   - name: Build the Docker image
-   #     run: docker build . --file testino/Dockerfile --tag maven:3.8.4-openjdk-17-slim
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME}}
 
-   #   - name: Push the Docker image to GitHub Packages
-   #     run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
-   #   - name: List contents of testino directory
-   #     run: ls -l ./testino
+
+      #   - name: Build the Docker image
+      #     run: docker build . --file testino/Dockerfile --tag maven:3.8.4-openjdk-17-slim
+
+      #   - name: Push the Docker image to GitHub Packages
+      #     run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
+      #   - name: List contents of testino directory
+      #     run: ls -l ./testino
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./testino
           push: false
-   #       tags: http://localhost:8082/artifactory/example-repo-local/prova:latest
-    #      labels: ${{ steps.meta.outputs.labels }} ${{ steps.meta.outputs.tags }}
-     #    secrets: |
-     #     "github_token=${{ env.GITHUB_TOKEN }}"
-     #   env:
-     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-      - name: Push to registry
-        run: docker push http://localhost:8082/artifactory/example-repo-local
+          tags: https://star-cat.igtlottery.it/artifactory/test/${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      #    secrets: |
+      #     "github_token=${{ env.GITHUB_TOKEN }}"
+      #   env:
+      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      # - name: Push to registry
+      #   run: docker push http://localhost:8082/artifactory/example-repo-local
