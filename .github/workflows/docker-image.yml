@@ -34,7 +34,7 @@ jobs:
       - name: Login to NEXUS
         uses: docker/login-action@v3
         with:
-          registry: http://87.16.16.25:8085
+          registry: http://192.168.31.175:8085
           username: ${{ secrets.NEXUS_USER }}
           password: ${{ secrets.NEXUS_PASSWORD }}
 
@@ -75,7 +75,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: http://87.16.16.25:8085/repository/prova/${{ steps.meta.outputs.tags }}
+          tags: http://192.168.31.175:8085/repository/prova/${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       #    secrets: |
       #     "github_token=${{ env.GITHUB_TOKEN }}"
