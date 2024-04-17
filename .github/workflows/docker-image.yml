@@ -83,3 +83,5 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       - name: Push to registry
         run: docker push ${{ steps.meta.outputs.tags }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
