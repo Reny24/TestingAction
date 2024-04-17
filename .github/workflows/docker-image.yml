@@ -76,9 +76,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
       #    secrets: |
       #     "github_token=${{ env.GITHUB_TOKEN }}"
-      #   env:
-      #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       # - name: Push to registry
       #   run: docker push http://localhost:8082/artifactory/example-repo-local
