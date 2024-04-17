@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+      - main1
+
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == false
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t my_image:latest --file testino/Dockerfile .
+
+      - name: Save Docker image as tar archive
+        run: docker save -o image.tar my_image:latest
+
+      - name: Push Docker image to JFrog Artifactory
+        run: |
+          curl -u ${{ secrets.JFROG_USER }}:${{ secrets.JFROG_PASSWORD }} -X PUT "http://localhost:8082/artifactory/example-repo-generic/image.tar" -T image.tar
