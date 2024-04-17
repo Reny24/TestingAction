@@ -8,7 +8,7 @@ on:
       - main
       - main1
 jobs:
-  build-and-push:
+  build-and-push1:
 #    if: github.event.pull_request.merged == true
     permissions:
       contents: read
