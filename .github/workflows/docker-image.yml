@@ -73,7 +73,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./testino
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
@@ -81,5 +81,7 @@ jobs:
       #     "github_token=${{ env.GITHUB_TOKEN }}"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-      # - name: Push to registry
-      #   run: docker push http://localhost:8082/artifactory/example-repo-local
+      - name: Push to registry
+        run: docker push ${{ steps.meta.outputs.tags }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
