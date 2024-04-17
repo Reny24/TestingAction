@@ -75,7 +75,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: http://192.168.31.175:8085/repository/prova/${{ steps.meta.outputs.tags }}
+          tags: 192.168.31.175:8085/repository/prova/${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       #    secrets: |
       #     "github_token=${{ env.GITHUB_TOKEN }}"
