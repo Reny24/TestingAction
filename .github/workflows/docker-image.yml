@@ -37,7 +37,7 @@ jobs:
         with:
           registry: localhost:8085
           username: admin
-          password: admin123
+          password: Admin123
 
 
       #  - name: Login to GitHub Packages Docker registry
