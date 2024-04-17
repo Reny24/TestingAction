@@ -45,7 +45,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ghs
+          username: Reny24
           password: ${{ env.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
