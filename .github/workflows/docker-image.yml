@@ -55,11 +55,11 @@ jobs:
       #       run: cd testino
 
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: localhost:8085/repository/prova/testino
+  #    - name: Extract metadata (tags, labels) for Docker
+  #      id: meta
+  #      uses: docker/metadata-action@v5
+  #      with:
+  #        images: localhost:8085/repository/prova/testino
 
 
       #   - name: Build the Docker image
@@ -75,8 +75,8 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: localhost:8085/repository/prova/testino
+      #    labels: ${{ steps.meta.outputs.labels }}
 
       #    secrets: |
       #     "github_token=${{ env.GITHUB_TOKEN }}"
