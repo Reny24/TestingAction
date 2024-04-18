@@ -22,7 +22,7 @@ jobs:
    #       repository: Reny24/TestingJen
    #       event-type: workflow_run
        run: |
-        curl- L\
+        curl -L\
         -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }}" \
