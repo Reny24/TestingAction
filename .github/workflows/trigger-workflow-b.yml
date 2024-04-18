@@ -16,10 +16,17 @@ jobs:
          private-key: ${{ secrets.PRIVATE_KEY }}
 
      - name: Repository Dispatch
-       uses: peter-evans/repository-dispatch@v3
-       with:
-          token: ${{ env.GITHUB_TOKEN }}
-          repository: Reny24/TestingJen
-          event-type: workflow_run
+   #    uses: peter-evans/repository-dispatch@v3
+   #    with:
+   #       token: ${{ env.GITHUB_TOKEN }}
+   #       repository: Reny24/TestingJen
+   #       event-type: workflow_run
+       run: |
+        curl- L\
+        -X POST \
+        -H "Accept: application/vnd.github.v3+json" \
+        -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }} \
+         https://api.github.com/repos/Reny24/TestingJen/.github/workflows/QuartoTry.yml/dispatches \
+         -d '{"ref":"master"}'
        env:
          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
