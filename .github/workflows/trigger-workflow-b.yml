@@ -1,4 +1,4 @@
-name: Publish/Push Artifact Package by Auth Github App
+name: Trigger a workflow in another repo
 on: workflow_dispatch
 jobs:
   microservice-test:
