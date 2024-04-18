@@ -9,18 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
- #    - name: Generate Token
- #      uses: actions/create-github-app-token@v1.9.2
- #      id: app-token
- #      with:
- #        app-id: ${{ secrets.APP_ID }}
- #        private-key: ${{ secrets.PRIVATE_KEY }}
+     - name: Generate Token
+       uses: actions/create-github-app-token@v1.9.2
+       id: app-token
+       with:
+         app-id: ${{ secrets.APP_ID }}
+         private-key: ${{ secrets.PRIVATE_KEY }}
 
      - name: Repository Dispatch
        uses: peter-evans/repository-dispatch@v3
        with:
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ env.GITHUB_TOKEN }}
           repository: Reny24/TestingJen
           event-type: workflow_run
- #      env:
- #        GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+       env:
+         GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
