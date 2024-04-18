@@ -19,7 +19,7 @@ jobs:
      - name: Repository Dispatch
        uses: peter-evans/repository-dispatch@v3
        with:
-          token: ${{ env.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: Reny24/TestingJen
           event-type: workflow_run
        env:
