@@ -35,16 +35,16 @@ jobs:
          echo ' {  "insecure-registries":  "10.14.119.201:8081"  } ' || sudo tee /etc/docker/daemon.json && cat /etc/docker/daemon.json && sudo systemctl restart docker
 
 
-      - name: Login to JFrog
-        uses: docker/login-action@v3
-        with:
-          registry: 10.14.119.201:8081
-          username: ${{ secrets.JFROG_USER }}
-          password: ${{ secrets.JFROG_PASSWORD }}
+#      - name: Login to JFrog
+#        uses: docker/login-action@v3
+#        with:
+#          registry: 10.14.119.201:8081
+#          username: ${{ secrets.JFROG_USER }}
+#          password: ${{ secrets.JFROG_PASSWORD }}
 
 
-      #  - name: Login to GitHub Packages Docker registry
-      #   run: echo "${{ steps.generate_token.outputs.token }}" | docker login ghcr.io -u ghs --password-stdin
+      - name: Login to GitHub Packages Docker registry
+        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login 10.14.119.201:8081 -u ${{ secrets.JFROG_USER }} --password-stdin
   #    - name: Log in to Docker JFrog
   #      uses: docker/login-action@v3
   #      with:
