@@ -15,9 +15,6 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
 
-    env:
-      REGISTRY: ghcr.io
-      IMAGE_NAME: testingaction/testino
 
     steps:
       - uses: actions/checkout@v3
@@ -35,9 +32,9 @@ jobs:
       - name: Login to NEXUS
         uses: docker/login-action@v3
         with:
-          registry: localhost:8085
-          username: admin
-          password: Admin123
+          registry: 10.14.119.201:8081
+          username: ${{ secrets.JFROG_USER }}
+          password: ${{ secrets.JFROG_PASSWORD }}
 
 
       #  - name: Login to GitHub Packages Docker registry
@@ -75,7 +72,7 @@ jobs:
         with:
           context: ./testino
           push: true
-          tags: localhost:8085/repository/prova/testino
+          tags: 10.14.119.201:8081/artifactory/docker/testino
       #    labels: ${{ steps.meta.outputs.labels }}
 
       #    secrets: |
