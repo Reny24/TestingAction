@@ -18,17 +18,17 @@ jobs:
          repositories: "TestingAction,TestingJen"
 
      - name: Repository Dispatch
-   #    uses: peter-evans/repository-dispatch@v3
-   #    with:
-   #       token: ${{ env.GITHUB_TOKEN }}
-   #       repository: Reny24/TestingJen
-   #       event-type: workflow_run
-       run: |
-        curl -L \
-        -X POST \
-        -H "Accept: application/vnd.github.v3+json" \
-        -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }}" \
-         https://api.github.com/repos/Reny24/TestingJen/actions/workflows/92409550/dispatches \
-         -d '{"ref":"master"}'
+       uses: peter-evans/repository-dispatch@v3
+       with:
+          token: ${{ env.GITHUB_TOKEN }}
+          repository: Reny24/TestingJen
+          event-type: trigger-workflow-b
+    #   run: |
+    #    curl -L \
+    #    -X POST \
+    #    -H "Accept: application/vnd.github.v3+json" \
+    #    -H "Authorization: Bearer ${{ env.GITHUB_TOKEN }}" \
+    #     https://api.github.com/repos/Reny24/TestingJen/actions/workflows/92409550/dispatches \
+    #     -d '{"ref":"master"}'
        env:
          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
