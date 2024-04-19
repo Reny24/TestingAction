@@ -32,7 +32,7 @@ jobs:
 
       - name: Settiamo tutto a mano
         run: |
-          cd /etc/docker && echo ' {  "insecure-registries":  "10.14.119.201:8081"  } ' >> daemon.json && sudo systemctl restart docker
+          cd /etc/docker && echo ' {  "insecure-registries":  "10.14.119.201:8081"  } ' >> daemon.json && cat daemon.json && sudo systemctl restart docker
 
 
       - name: Login to JFrog
