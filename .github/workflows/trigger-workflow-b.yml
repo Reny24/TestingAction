@@ -7,7 +7,7 @@ jobs:
       actions: write
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
 
      - name: Generate Token
        uses: actions/create-github-app-token@v1.9.2
@@ -15,7 +15,7 @@ jobs:
        with:
          app-id: ${{ secrets.APP_ID }}
          private-key: ${{ secrets.PRIVATE_KEY }}
-         repositories: "TestingAction, TestingJen"
+         repositories: "TestingAction,TestingJen"
 
      - name: Repository Dispatch
    #    uses: peter-evans/repository-dispatch@v3
