@@ -44,7 +44,7 @@ jobs:
 
 
       - name: Login to GitHub Packages Docker registry
-        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login 10.14.119.201:8081 -u ${{ secrets.JFROG_USER }} --password-stdin
+        run: echo "${{ secrets.JFROG_PASSWORD }}" | docker login http://10.14.119.201:8081 -u ${{ secrets.JFROG_USER }} --password-stdin
   #    - name: Log in to Docker JFrog
   #      uses: docker/login-action@v3
   #      with:
