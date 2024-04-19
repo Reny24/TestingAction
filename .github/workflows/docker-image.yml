@@ -32,7 +32,7 @@ jobs:
 
       - name: Settiamo tutto a mano
         run: |
-          cd \etc\docker\ \ 
+          cd /etc/docker \ 
           ls \ 
 
       - name: Login to JFrog
